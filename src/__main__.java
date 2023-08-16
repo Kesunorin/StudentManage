@@ -66,6 +66,7 @@ public class __main__ {
                 case "5" -> {
                     flag = false;
                     System.out.println("即将退出...");
+                    pause();
                 }
                 default -> {
                     System.out.println("输入有误,请重新输入!");
@@ -81,10 +82,12 @@ public class __main__ {
         System.out.println("请输入你要添加学生的id");
         String id = sc.next();
         if (!list.isEmpty()) {
-            for (Student student : list) {
-                if (id.equals(student.getId())) {
+            for (int i = 0; i < list.size(); i++) {
+                if (id.equals(list.get(i).getId())) {
                     System.out.println("id已存在！请重新输入！");
+                    System.out.println("请输入你要添加学生的id");
                     id = sc.next();
+                    i--;
                 }
             }
         }
@@ -113,8 +116,8 @@ public class __main__ {
     }
 
     public static void pause(){
-        System.out.println("请按回车返回初始菜单...");
+        System.out.println("请按回车键返回初始菜单");
         Scanner sc = new Scanner(System.in);
-        String pause = sc.nextLine();
+        String str = sc.nextLine();
     }
 }
