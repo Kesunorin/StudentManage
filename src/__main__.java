@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class __main__ {
-    public static void main(String[] args) {
-        boolean flag = true;
-        ArrayList<Student> list = new ArrayList<>();
-        while (flag) {
+    public static void stuManage() {
+        ArrayList<Student> stuList = new ArrayList<>();
+        while (true) {
             System.out.println("""
                     -----------欢迎来到学生管理系统-----------
                     "1:添加学生"
@@ -18,54 +17,54 @@ public class __main__ {
             String choose = sc.next();
             switch (choose) {
                 case "1" -> {
-                    list.add(addStudent(list));
+                    stuList.add(addStudent(stuList));
                     System.out.println("添加成功！");
                     pause();
                 }
                 case "2" -> {
                     System.out.println("请输入你要删除学生的id");
-                    int num2 = checkId(list);
+                    int num2 = checkId(stuList);
                     if (num2 == -1)
                         System.out.println("要删除的学生不存在，即将返回初始菜单!");
                     else {
-                        list.remove(num2);
+                        stuList.remove(num2);
                         System.out.println("删除成功！");
                     }
                     pause();
                 }
                 case "3" -> {
                     System.out.println("请输入你要修改学生的id");
-                    int num3 = checkId(list);
+                    int num3 = checkId(stuList);
                     if (num3 == -1)
                         System.out.println("要修改的学生不存在，即将返回初始菜单!");
                     else {
                         System.out.println("请输入你要修改学生的姓名");
                         String name = sc.next();
-                        list.get(num3).setName(name);
+                        stuList.get(num3).setName(name);
                         System.out.println("请输入你要修改学生的年龄");
                         int age = sc.nextInt();
-                        list.get(num3).setAge(age);
+                        stuList.get(num3).setAge(age);
                         System.out.println("请输入你要修改学生的家庭住址");
                         String address = sc.next();
-                        list.get(num3).setAddress(address);
+                        stuList.get(num3).setAddress(address);
                         System.out.println("修改成功！");
                     }
                     pause();
                 }
                 case "4" -> {
-                    if (list.isEmpty())
+                    if (stuList.isEmpty())
                         System.out.println("当前无学生信息，请添加后在查询");
                     else {
                         System.out.println("id\t\t姓名\t\t年龄\t\t家庭住址");
-                        for (Student stu : list) {
+                        for (Student stu : stuList) {
                             System.out.println(stu.getId() + "\t\t" + stu.getName() + "\t\t" + stu.getAge() + "\t\t" + stu.getAddress());
                         }
                     }
                     pause();
                 }
                 case "5" -> {
-                    flag = false;
                     System.out.println("即将退出...");
+                    System.exit(0);
                     pause();
                 }
                 default -> {
